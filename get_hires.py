@@ -1,17 +1,16 @@
 import os
 import sys
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    import torchaudio
+from pymediainfo import MediaInfo
 
 def is_highres_audio(file_path):
-    """Check if a FLAC file is high-resolution audio."""
-    try:
-        info = torchaudio.info(file_path)
-        return info.sample_rate > 44100 and info.bits_per_sample > 16
-    except Exception as e:
-        print(f"Error processing file {file_path}: {e}")
-        return False
+    """Check if a FLAC file is high-resolution audio using pymediainfo."""
+    media_info = MediaInfo.parse(file_path)
+    for track in media_info.tracks:
+        if track.track_type == 'Audio':
+            sample_rate = int(track.sampling_rate) if track.sampling_rate else 0
+            bit_depth = int(track.bit_depth) if track.bit_depth else 0
+            return sample_rate > 44100 and bit_depth > 16
+    return False
 
 def find_highres_flac_files(directory):
     """Recursively find high-resolution FLAC files in a directory."""
