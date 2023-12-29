@@ -1,0 +1,2 @@
+-i https://pypi.org/simple
+pymediainfo==6.1.0
