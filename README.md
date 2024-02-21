@@ -1,6 +1,10 @@
-List abs paths to "hi-res" flac files found in a directory structure.
+# List abs paths to "hi-res" flac files found in a directory structure
 
-arg 1 is the path to starting directory
+sample rate > 44100 Hz and bit depth > 16
+
+## Flow
+
+`arg 1` is the path to starting directory
 
 `is_highres_audio` function return value possibilities based on script design:
 
