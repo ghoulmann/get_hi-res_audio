@@ -2,6 +2,10 @@
 
 sample rate > 44100 Hz and bit depth > 16
 
+## Requirements
+
+pymediainfo==6.1.0
+
 ## Flow
 
 `arg 1` is the path to starting directory
